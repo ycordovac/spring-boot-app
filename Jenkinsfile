@@ -1,4 +1,4 @@
-pipeline(
+pipeline{
 	agent{
 		label "nodo-java"
 	}
@@ -10,4 +10,4 @@ pipeline(
 			)
 		}
 	}
-)
+}
