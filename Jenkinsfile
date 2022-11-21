@@ -38,6 +38,7 @@ spec:
 		stage("Get version") {
             steps {
                 script {
+                    pom = readMavenPom file: "pom.xml"
                     versionPom = "${pom.version}"                        
                 }
             }
