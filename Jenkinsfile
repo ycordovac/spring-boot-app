@@ -8,7 +8,7 @@ kind: Pod
 spec:
   containers:
   - name: shell
-    image: yandihlg/jenkins-nodo-java-bootcamp:latest
+    image: alledovalero/jenkins-nodo-nodejs-bootcamp:1.0
     volumeMounts:
     - mountPath: /var/run/docker.sock
       name: docker-socket-volume
@@ -27,18 +27,22 @@ spec:
             defaultContainer 'shell'
         }
     }
-    environment {
-        DOCKERHUB_CREDENTIALS=credentials("credencialDockerHub")
+
+	environment {
+		DOCKERHUB_CREDENTIALS=credentials("yandihlg")
         DOCKER_IMAGE_NAME="yandihlg/bootcamp"
     }
 	
 	stages{
-		stage("build"){
-			steps{
-				sh "mvn clean package -DskipTest"
-			}
-		}
-		stage("build image an publish in nexus"){
+        
+		stage("Get version") {
+            steps {
+                script {
+                    versionPom = "${pom.version}"                        
+                }
+            }
+        }
+		stage("build image"){
 			steps{
 				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
 				sh "docker build -t $DOCKER_IMAGE_NAME:${versionPom} ."
