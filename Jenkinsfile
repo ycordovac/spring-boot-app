@@ -34,6 +34,12 @@ spec:
     }
 	stages {
 
+        stage('Build app') {
+          steps {
+               sh "mvn clean install -DskipTests"
+          }
+        }
+
         stage('Push Image to Docker Hub') {
           steps {
             script {
