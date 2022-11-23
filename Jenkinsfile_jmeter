@@ -52,6 +52,8 @@ spec:
                         sh 'apt install wget'
                         sh 'wget https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.5.tgz'
                         sh 'tar xvf apache-jmeter-5.5.tgz'
+                        sh 'cat'
+                        sh 'echo apache-jmeter-5.5'
                         sh 'cp plugins/*.jar apache-jmeter-5.5/lib/ext'
                         sh 'mkdir test'
                         sh 'mkdir apache-jmeter-5.5/test'
