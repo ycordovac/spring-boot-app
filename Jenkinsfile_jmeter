@@ -83,7 +83,19 @@ spec:
                 }
             }
         }
-    }    
+    }
+    steps{
+       script {
+            dir('jmeter-docker') {
+               sh 'pip install bzt'
+               sh 'export PATH=$PATH:/home/jenkins/.local/bin'
+
+               BlazeMeterTest: {
+                   sh '/home/jenkins/.local/bin/bzt test/perform_test.jtl -report'
+               }
+            }
+       }
+   }    
 
 	post {
 		always {
