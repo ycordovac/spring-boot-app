@@ -51,7 +51,6 @@ spec:
                         }
                         sh 'apt install wget'
                         sh 'apt-get install python3-pip -y'
-                        sh 'pip install bzt'
                         sh 'wget https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.5.tgz'
                         sh 'tar xvf apache-jmeter-5.5.tgz'
                         sh 'cat'
@@ -90,7 +89,7 @@ spec:
                 script {
                         dir('jmeter-docker') {
                         sh 'pip install bzt'
-                        sh 'export PATH=$PATH:/home/jenkins/.local/bin'
+                        
 
                         BlazeMeterTest: {
                             sh '/home/jenkins/.local/bin/bzt test/perform_test.jtl -report'
