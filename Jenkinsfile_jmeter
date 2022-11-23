@@ -42,7 +42,7 @@ spec:
                         sh 'rm -r jmeter-docker'
                     }
 
-                    sh 'git clone https://github.com/ycordovac/spring-boot-app.git'
+                    sh 'git clone https://github.com/ycordovac/jmeter-docker.git'
 
                         dir('jmeter-docker') {
 
